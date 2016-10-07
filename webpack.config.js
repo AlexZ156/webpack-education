@@ -24,7 +24,8 @@ module.exports = {
 				exclude: /(node_modules|bower_components)/,
 				loader: 'babel-loader',
 				query: {
-					presets: ['es2015','stage-0', 'runtime']
+					presets: ['es2015','stage-0'],
+					plugins: ['transform-runtime']
 				}
 			}/*,
 			{
@@ -36,5 +37,16 @@ module.exports = {
 
 	plugins: [
 		new webpack.EnvironmentPlugin('NODE_ENV')
-	]
+	],
+
+	resolve: {
+		modulesDirectories: ['node_modules'],
+		extensions: ['', '.js']
+	},
+
+	resolveLoader: {
+		modulesDirectories: ['node_modules'],
+		moduleTemplates: ['*-loader', '*'],
+		extensions: ['', '.js']
+	}
 };
