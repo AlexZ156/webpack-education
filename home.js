@@ -1,9 +1,9 @@
 'use strict';
 
-let welcome = require('./welcome');
+import welcome from './welcome';
 
 welcome('home');
-var aaa = 1;
+var aaa = 2;
 
 
 exports.welcome = welcome;
