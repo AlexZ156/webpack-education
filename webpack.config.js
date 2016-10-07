@@ -2,11 +2,17 @@ const NODE_ENV = process.env.NODE_ENV || 'dev';
 const webpack = require('webpack');
 
 module.exports = {
-	entry: __dirname + "/home",
+	context: __dirname + '/dev',
+
+	entry: {
+		home: "./home",
+		about: "./about"
+	},
 
 	output: {
-		filename: __dirname + "/build.js",
-		library: 'home'
+		path: __dirname + '/build',
+		filename: '[name].js',
+		library: '[name]'
 	},
 
 	watch: NODE_ENV === 'dev',
@@ -36,6 +42,7 @@ module.exports = {
 	},
 
 	plugins: [
+		new webpack.NoErrorsPlugin(),
 		new webpack.EnvironmentPlugin('NODE_ENV')
 	],
 
